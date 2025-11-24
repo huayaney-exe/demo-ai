@@ -1,26 +1,167 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    /* BriefIA Brand Colors - Kept for reference and variable usage */
+    --briefia-indigo: #4F46E5;
+    --briefia-purple: #7C3AED;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --error: #EF4444;
+    --slate-900: #0F172A;
+    --slate-600: #475569;
+    --slate-400: #94A3B8;
+    --slate-300: #CBD5E1;
+    --slate-200: #E2E8F0;
+    --slate-100: #F1F5F9;
+    --slate-50: #F8FAFC;
+    --background: #ffffff;
+    --foreground: #0F172A;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Inter', sans-serif;
+    color: var(--slate-900);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+@layer components {
+
+    /* Gradient Utility Classes */
+    .gradient-briefia {
+        background: linear-gradient(45deg, var(--briefia-indigo) 0%, var(--briefia-purple) 100%);
+    }
+
+    .text-gradient-briefia {
+        background: linear-gradient(45deg, var(--briefia-indigo) 0%, var(--briefia-purple) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /* Button Base Styles */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        padding: 0 2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 200ms ease;
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
+
+    .btn-primary {
+        background: var(--success);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: var(--briefia-indigo);
+        border: 2px solid var(--briefia-indigo);
+    }
+
+    .btn-secondary:hover {
+        background: var(--briefia-indigo);
+        color: white;
+    }
+
+    /* Card Styles */
+    .card {
+        background: white;
+        border: 1px solid var(--slate-200);
+        border-radius: 0.75rem;
+        padding: 2rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: all 300ms ease;
+    }
+
+    .card:hover {
+        border-color: var(--briefia-indigo);
+    }
+
+    /* Input Styles */
+    .input {
+        height: 48px;
+        padding: 0 1rem;
+        border: 1px solid var(--slate-300);
+        border-radius: 0.5rem;
+        font-size: 16px;
+        font-family: 'Inter', sans-serif;
+        outline: none;
+        transition: all 200ms ease;
+    }
+
+    .input:focus {
+        border-color: var(--briefia-indigo);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    .input::placeholder {
+        color: var(--slate-400);
+    }
+
+    /* Section Spacing */
+    .section {
+        padding: 5rem 1rem;
+    }
+
+    @media (min-width: 768px) {
+        .section {
+            padding: 6rem 2rem;
+        }
+    }
+
+    /* Container */
+    .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    /* Content Max Width (for reading) */
+    .content-max-width {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Remove default link styles */
+a {
+    color: inherit;
+    text-decoration: none;
 }
